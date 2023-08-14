@@ -1,0 +1,372 @@
+{% load static %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-md-12">
+            <div class="products-details-image">
+                <ul class="products-details-image-slides">
+                    {% for image in images %}
+                        <li><img src="{% static 'img/' %}{{ image.image_1.url }}" alt="image"></li>
+                        {% if image.image_2 %}
+                            <li><img src="{% static 'img/' %}{{ image.image_2.url }}" alt="image"></li>
+                        {% endif %}
+                        {% if image.image_3 %}
+                            <li><img src="{% static 'img/' %}{{ image.image_3.url }}" alt="image"></li>
+                        {% endif %}
+                        {% if image.image_4 %}
+                            <li><img src="{% static 'img/' %}{{ image.image_4.url }}" alt="image"></li>
+                        {% endif %}
+                        {% if image.image_5 %}
+                            <li><img src="{% static 'img/' %}{{ image.image_5.url }}" alt="image"></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <div class="slick-thumbs">
+                    <ul >
+                        {% for image in images %}
+                            <li><img src="{% static 'img/' %}{{ image.image_1.url }}" alt="image"></li>
+                            {% if image.image_2 %}
+                                <li><img src="{% static 'img/' %}{{ image.image_2.url }}" alt="image"></li>
+                            {% endif %}
+                            {% if image.image_3 %}
+                                <li><img src="{% static 'img/' %}{{ image.image_3.url }}" alt="image"></li>
+                            {% endif %}
+                            {% if image.image_4 %}
+                                <li><img src="{% static 'img/' %}{{ image.image_4.url }}" alt="image"></li>
+                            {% endif %}
+                            {% if image.image_5 %}
+                                <li><img src="{% static 'img/' %}{{ image.image_5.url }}" alt="image"></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div> 
+            </div>
+        </div>
+        
+        
+
+        <div class="col-lg-7 col-md-12">
+            <div class="products-details-desc">
+                <h3>{{ shoe.name }}</h3>
+
+                <div class="price">
+                    <span class="new-price">${{ prix.prix_promo }}</span>
+                    <span class="old-price">${{ prix.prix }}</span>
+                </div>
+
+                <div class="products-review">
+                    <div class="rating">
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                    </div>
+                    <a href="#" class="rating-count">3 reviews</a>
+                </div>
+
+                <ul class="products-info">
+                    <li>
+                        <span>Availability:</span>
+                        <a href="#" id="stock-link">In stock (<span id="stock-count"></span> items)</a>
+                    </li>
+                    <li><span>Shoe Model:</span> <a href="#">{{modele.name}}</a></li>
+                </ul>
+
+                <div class="products-size-wrapper">
+                    <span>Size:</span>
+                    <ul>
+                        {% for size, total_stock in size_stock %}
+                            <li {% if total_stock == 0 %}class="out-of-stock"{% endif %}>
+                                <a href="#" class="size-link" data-size="{{ size.size }}">{{ size.size }}</a>
+                            </li>
+                        {% endfor %}
+                        
+                    </ul>
+                    
+                    
+                    
+                    
+                </div>
+
+                <div class="products-info-btn">
+                    <a href="contact.html"><i class='bx bx-envelope'></i> Ask about this products</a>
+                </div>
+
+                <div class="products-add-to-cart">
+                    <div class="input-counter">
+                        <span class="minus-btn"><i class='bx bx-minus'></i></span>
+                        <input type="text" value="1">
+                        <span class="plus-btn"><i class='bx bx-plus'></i></span>
+                    </div>
+
+                    <button type="submit" class="default-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                </div>
+
+                <div class="wishlist-compare-btn">
+                    <a href="#" class="optional-btn"><i class='bx bx-heart'></i> Add to Wishlist</a>
+                </div>
+
+                <div class="buy-checkbox-btn">
+                    <div class="item">
+                        <input class="inp-cbx" id="cbx" type="checkbox">
+                        <label class="cbx" for="cbx">
+                            <span>
+                                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </svg>
+                            </span>
+                            <span>I agree with the terms and conditions</span>
+                        </label>
+                    </div>
+
+                    <div class="item">
+                        <a href="#" class="default-btn">Buy it now!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab products-details-tab">
+        <ul class="tabs">
+            <li><a href="#">
+                <div class="dot"></div> Description
+            </a></li>
+
+            <li><a href="#">
+                <div class="dot"></div> Reviews
+            </a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tabs-item">
+                <div class="products-details-tab-content">
+                    <p>{{shoe.description}}</p>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <ul>
+                                <li>Fabric 1: 100% Polyester</li>
+                                <li>Fabric 2: 100% Polyester, Lining: 100% Polyester</li>
+                                <li>Fabric 3: 75% Polyester, 20% Viscose, 5% Elastane</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <ol>
+                                <li>Fabric 3: 75% Polyester, 20% Viscose, 5% Elastane</li>
+                                <li>Fabric 2: 100% Polyester, Lining: 100% Polyester</li>
+                                <li>Fabric 1: 100% Polyester</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabs-item">
+                <div class="products-details-tab-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>Color:</td>
+                                    <td>
+                                        {% for color in colors %}
+                                            {{ color.name }}
+                                            {% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Size:</td>
+                                    <td>
+                                        {% for size in sizes %}
+                                            {{ size.size }}
+                                            {% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Material:</td>
+                                    <td>{{ shoe.material }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping:</td>
+                                    <td>{{ shoe.shipping }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Country:</td>
+                                    <td>{{ shoe.country }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabs-item">
+                <div class="products-details-tab-content">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>Shipping</td>
+                                    <td>This item Ship to USA</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Delivery</td>
+                                    <td>
+                                        Estimated between Wednesday 07/31/2021 and Monday 08/05/2021 <br>
+                                        Will usually ship within 1 bussiness day.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabs-item">
+                <div class="products-details-tab-content">
+                    <p>Here are 5 more great reasons to buy from us:</p>
+
+                    <ol>
+                        <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</li>
+                        <li> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</li>
+                        <li>When an unknown printer took a galley of type and scrambled it to make a type specimen book.</li>
+                        <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+                        <li>When an unknown printer took a galley of type and scrambled it to make a type specimen book.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="tabs-item">
+                <div class="products-details-tab-content">
+                    <div class="products-review-form">
+                        <h3>Customer Reviews</h3>
+
+                        <div class="review-title">
+                            <div class="rating">
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bxs-star'></i>
+                                <i class='bx bx-star'></i>
+                            </div>
+                            <p>Based on 3 reviews</p>
+                            <a href="#" class="default-btn">Write a Review</a>
+                        </div>
+
+                        <div class="review-comments">
+                            <div class="review-item">
+                                <div class="rating">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bx-star'></i>
+                                </div>
+                                <h3>Good</h3>
+                                <span><strong>Admin</strong> on <strong>Sep 21, 2021</strong></span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+
+                            <div class="review-item">
+                                <div class="rating">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bx-star'></i>
+                                </div>
+                                <h3>Good</h3>
+                                <span><strong>Admin</strong> on <strong>Sep 21, 2021</strong></span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+
+                            <div class="review-item">
+                                <div class="rating">
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bxs-star'></i>
+                                    <i class='bx bx-star'></i>
+                                </div>
+                                <h3>Good</h3>
+                                <span><strong>Admin</strong> on <strong>Sep 21, 2021</strong></span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                            </div>
+                        </div>
+
+                        <div class="review-form">
+                            <h3>Write a Review</h3>
+
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" id="name" name="name" placeholder="Enter your name" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" id="email" name="email" placeholder="Enter your email" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" id="review-title" name="review-title" placeholder="Enter your review a title" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <textarea name="review-body" id="review-body" cols="30" rows="6" placeholder="Write your comments here" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12">
+                                        <button type="submit" class="default-btn">Submit Review</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const stockLink = document.getElementById('stock-link');
+const stockCount = document.getElementById('stock-count');
+const sizeLinks = document.getElementsByClassName('size-link');
+const sizeStockData = {
+    {% for size, total_stock in size_stock %}
+        "{{ size.size }}": {{ total_stock }},
+    {% endfor %}
+};
+
+const updateStockCount = (selectedSize) => {
+    const stock = sizeStockData[selectedSize] || 0;
+    stockCount.innerText = stock;
+};
+
+Array.from(sizeLinks).forEach((link) => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const selectedSize = link.dataset.size;
+        updateStockCount(selectedSize);
+    });
+});
+
+const defaultSelectedSize = '{{ sizes.0.size }}';
+updateStockCount(defaultSelectedSize);
+
+
+
+</script>

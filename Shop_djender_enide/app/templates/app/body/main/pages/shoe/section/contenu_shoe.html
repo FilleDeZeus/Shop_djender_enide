@@ -1,0 +1,223 @@
+{% load static %}
+
+    <!-- Start Products Area -->
+<section class="products-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12">
+                <div class="woocommerce-widget-area">
+                    
+                    <div class="woocommerce-widget-area">
+                        <div class="woocommerce-widget collections-list-widget">
+                            <h3 class="woocommerce-widget-title">Categories</h3>
+                            <ul class="collections-list-row">
+                                {% for categorie in categories %}
+                                    {% if selected_genre and categorie.genre.name == selected_genre %}
+                                        <li class="active">
+                                            <a href="{% url 'shoe' %}?genre={{ selected_genre }}&categorie={{ categorie.name }}">
+                                                {{ categorie.name }}
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <a href="{% url 'shoe' %}?genre={{ selected_genre }}&categorie={{ categorie.name }}">
+                                                {{ categorie.name }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="woocommerce-widget price-list-widget">
+                        <h3 class="woocommerce-widget-title">Price</h3>
+                        <div class="collection-filter-by-price">
+                            <input class="js-range-of-price" type="text" data-min="{{ prix_min }}" data-max="{{ prix_max }}"
+                                name="filter_by_price" data-step="10">
+                        </div>
+                    </div> 
+                    
+                    <div class="woocommerce-widget size-list-widget">
+                        <h3 class="woocommerce-widget-title">Size</h3>
+                        <ul class="size-list-row">
+                            {% for size in sizes %}
+                            {% if size.size not in selected_sizes %}
+                                <li>
+                                    <a href="?genre={{ selected_genre }}&categorie={{ selected_categorie }}&prix_min={{ prix_min }}&prix_max={{ prix_max }}{% for selected_size in selected_sizes %}&size={{ selected_size }}{% endfor %}&size={{ size.size }}">
+                                        {{ size.size }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        
+                        </ul>
+                    </div>
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-md-12">
+                <div class="products-filter-options">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 col-md-4">
+                            <div class="d-lg-flex d-md-flex align-items-center">
+                                <span class="sub-title d-lg-none"><a href="#" data-bs-toggle="modal"
+                                        data-bs-target="#productsFilterModal"><i class='bx bx-filter-alt'></i>
+                                        Filter</a></span>
+
+                                <span class="sub-title d-none d-lg-block d-md-block">View:</span>
+
+                                <div class="view-list-row d-none d-lg-block d-md-block">
+                                    <div class="view-column">
+                                        <a href="#" class="icon-view-one">
+                                            <span></span>
+                                        </a>
+
+                                        <a href="#" class="icon-view-two active">
+                                            <span></span>
+                                            <span></span>
+                                        </a>
+
+                                        <a href="#" class="icon-view-three">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </a>
+
+                                        <a href="#" class="view-grid-switch">
+                                            <span></span>
+                                            <span></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+                            <p>Showing 1 – 18 of 100</p>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4">
+                            <div class="products-ordering-list">
+                                <select>
+                                    <option>Sort by Price: Low to High</option>
+                                    <option>Default Sorting</option>
+                                    <option>Sort by Popularity</option>
+                                    <option>Sort by Average Rating</option>
+                                    <option>Sort by Latest</option>
+                                    <option>Sort by Price: High to Low</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="products-collections-filter" class="row">
+                    {% for shoe in shoes_page %}
+                        <div class="col-lg-6 col-md-6 col-sm-6 products-col-item">
+                            <div class="products-box">
+                                {% with shoe.colorshoe_set.all|first as colorshoe %}
+                                {% for image in colorshoe.images.all %}
+                                    <div class="products-image">
+                                        <a href="{% url 'shoe_details' id=shoe.id %}">
+                                            <img src="{% static 'img/' %}{{ image.image_1 }}" class="main-image" alt="image">
+                                            <img src="{% static 'img/' %}{{ image.image_1 }}" class="hover-image" alt="image">
+                                        </a>
+                                        <div class="products-button">
+                                            <ul>
+                                                <li>
+                                                        <div class="wishlist-btn">
+                                                            <a href="">
+                                                                <i class='bx bx-heart'></i>
+                                                                <span class="tooltip-label">Add to Wishlist</span>
+                                                            </a>
+                                                        </div>
+                                                
+                                                    
+                                                    
+                                                </li>
+                                                <li>
+                                                    <div class="compare-btn">
+                                                        <a href="#">
+                                                            <i class='bx bx-refresh'></i>
+                                                            <span class="tooltip-label">Compare</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="quick-view-btn">
+                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#productsQuickView">
+                                                            <i class='bx bx-search-alt'></i>
+                                                            <span class="tooltip-label">Quick View</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="new-tag">New!</div>
+                                    </div>
+                                {% endfor %}
+                                {% endwith %}
+                                <div class="products-content">
+                                    <span class="categorie">{{ shoe.categorie.name }}</span>
+                                    <div class="star-rating">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </div>
+                    
+                                    <div class="price">
+                                        {% for p in shoe.prix.all %}
+                                            <span class="old-price">{{ p.prix }}</span>
+                                            <span class="new-price">{{ p.prix_promo }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    <a href="#" class="add-to-cart">Add to Cart</a>
+                                </div>
+                                <span class="products-discount">
+                                    <span>
+                                        20% OFF
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="pagination-area text-center">
+                    {% if shoes_page.has_previous %}
+                        <a href="?page={{ shoes_page.previous_page_number }}" class="prev page-numbers">
+                            <i class='bx bx-chevron-left'></i>
+                        </a>
+                    {% endif %}
+                    
+                    {% for i in shoes_page.paginator.page_range %}
+                        {% if shoes_page.number == i %}
+                            <span class="page-numbers current" aria-current="page">{{ i }}</span>
+                        {% else %}
+                            <a href="?page={{ i }}" class="page-numbers">{{ i }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if shoes_page.has_next %}
+                        <a href="?page={{ shoes_page.next_page_number }}" class="next page-numbers">
+                            <i class='bx bx-chevron-right'></i>
+                        </a>
+                    {% endif %}
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    </div>  
+</section>
+    <!-- End Products Area -->
+
+

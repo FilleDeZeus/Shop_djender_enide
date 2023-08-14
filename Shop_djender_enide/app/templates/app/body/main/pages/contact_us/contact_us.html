@@ -1,0 +1,10 @@
+{%  extends 'app/body/main/main.html'  %}
+{% load static %}
+
+    {% block page %}
+        {% include 'app/body/main/pages/contact_us/section/titre_contact.html' %}
+        
+        {% include 'app/body/main/pages/contact_us/section/contenu_contact.html' %}
+
+        {% include 'app/body/main/pages/contact_us/section/map.html' %}
+    {% endblock %}

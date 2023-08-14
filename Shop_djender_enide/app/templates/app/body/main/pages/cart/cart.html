@@ -1,0 +1,23 @@
+{%  extends 'app/body/main/main.html'  %}
+{% load static %}
+
+    {% block page %}
+    <!-- Start Page Title Area -->
+    {% include 'app/body/main/pages/cart/section/titre_cart.html' %}
+    <!-- End Page Title Area -->
+    <!-- Start Cart Area -->
+    <section class="cart-area ptb-100">
+        <div class="container">
+            <form>
+                {% include 'app/body/main/pages/cart/section/search.html' %}
+                {% include 'app/body/main/pages/cart/section/tableau_cart.html' %}
+                {% include 'app/body/main/pages/cart/section/btn_cart.html' %}
+                {% include 'app/body/main/pages/cart/section/total_cart.html' %}
+            
+            
+            </form>
+        </div>
+    </section>
+    <!-- End Cart Area -->
+
+    {% endblock %}

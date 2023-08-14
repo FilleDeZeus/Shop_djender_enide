@@ -1,0 +1,15 @@
+
+
+{%  extends 'app/body/main/main.html'  %}
+{% load static %}
+
+    {% block page %}
+    <section class="product-details-area pt-100 pb-70">
+        {% include 'app/body/main/pages/shoe_details/section/titre_shoe_details.html' %}
+    
+        {% include 'app/body/main/pages/shoe_details/section/contenu_shoe_details.html' %}
+
+        {% include 'app/body/main/pages/shoe_details/section/related_shoe_details.html' %}
+    
+    </section>
+    {% endblock %}

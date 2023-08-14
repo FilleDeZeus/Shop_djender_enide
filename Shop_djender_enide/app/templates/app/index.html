@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %} 
+
+
+
+    <!-- ======= Header ======= -->
+    {% include 'app/body/header/header.html' %}
+    <!-- End Header -->
+    <!-- ======= Navbar ======= -->
+    {% include 'app/body/navbar/navbar.html' %}
+
+    <!-- End Navbar -->
+    {% include 'app/body/modal/search.html' %}
+    <!-- ======= #main ======= -->
+        
+        {% block main %}
+        {% endblock %}
+
+    <!-- End #main -->
+
+    <!-- Modal-->
+    {% include 'app/body/modal/sidebar.html' %}
+    {% include 'app/body/modal/products_quick_view.html' %}
+    {% include 'app/body/modal/shopping_cart.html' %}
+    {% include 'app/body/modal/wishlist.html' %}
+    {% include 'app/body/modal/size.html' %}
+    {% include 'app/body/modal/shipping.html' %}
+    {% include 'app/body/modal/products_filter.html' %}
+    <!-- End Modal-->
+
+    <!-- ======= Footer ======= -->
+    {% include 'app/body/footer/footer.html' %}
+    <!-- End Footer -->
+    <div class="go-top"><i class='bx bx-up-arrow-alt'></i></div>
+    
+    
+{% endblock %}
+
+

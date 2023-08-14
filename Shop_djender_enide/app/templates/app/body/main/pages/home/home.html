@@ -1,0 +1,16 @@
+{%  extends 'app/body/main/main.html'  %}
+{% load static %}
+
+    {% block page %}
+    {% include 'app/body/main/pages/home/section/main_banner.html' %}
+    {% include 'app/body/main/pages/home/section/categories.html' %}
+    {% include 'app/body/main/pages/home/section/products_recent.html' %}
+
+    {% include 'app/body/main/pages/home/section/offer.html' %}
+    {% include 'app/body/main/pages/home/section/products_popular.html' %}
+    
+    {% include 'app/body/main/pages/home/section/partner.html' %}
+    {% include 'app/body/main/pages/home/section/blog.html' %}
+    
+    
+    {% endblock %}
